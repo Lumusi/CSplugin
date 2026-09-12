@@ -1,0 +1,8 @@
+{
+  "name": "Lumusi CSplugin",
+  "description": "CineStream fix fork: unblocked s_343 redeem + WebView driveseed generate",
+  "manifestVersion": 1,
+  "pluginLists": [
+    "https://raw.githubusercontent.com/Lumusi/CSplugin/builds/plugins.json"
+  ]
+}
