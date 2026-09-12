@@ -1,0 +1,26 @@
+[
+    {
+        "url": "https://raw.githubusercontent.com/Lumusi/CSplugin/builds/CineStream.cs3",
+        "status": 1,
+        "version": 488,
+        "name": "CineStream",
+        "internalName": "CineStream",
+        "authors": [
+            "megix"
+        ],
+        "description": "One stop solution for Movies, Series, Anime, AsianDrama and Torrents",
+        "fileSize": 701801,
+        "repositoryUrl": "https://github.com/Lumusi/CSplugin",
+        "language": "en",
+        "tvTypes": [
+            "TvSeries",
+            "Movie",
+            "AsianDrama",
+            "Anime",
+            "Torrent"
+        ],
+        "iconUrl": "https://github.com/SaurabhKaperwan/CSX/raw/refs/heads/master/CineStream/icon.png",
+        "apiVersion": 1,
+        "fileHash": "sha256-b973fef8ce72719bacff174d1caf8df3a688071377ce6be040ed2d47082835c5"
+    }
+]
