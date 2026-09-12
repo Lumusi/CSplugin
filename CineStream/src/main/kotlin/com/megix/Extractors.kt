@@ -42,13 +42,19 @@ import com.megix.settings.Settings
 import android.webkit.JavascriptInterface
 import android.webkit.WebView
 import android.webkit.WebViewClient
-import com.lagradost.cloudstream3.MainActivity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.util.concurrent.CountDownLatch
 import java.util.concurrent.TimeUnit
 
 import okhttp3.HttpUrl.Companion.toHttpUrlOrNull
+
+import android.content.Context
+
+/** Application context stashed at plugin load; used for WebView-based extraction. */
+internal object PluginContext {
+    @Volatile var app: Context? = null
+}
 
 class Streameeeeee : Videostr() {
     override var name = "Streameeeeee"
@@ -563,14 +569,14 @@ open class Driveleech : ExtractorApi() {
     // a Cloudflare Turnstile token (cf_token) that only exists in a live page.
     // Runs the page's own generate() inside a WebView and returns the JSON url.
     private suspend fun webViewGenerate(fileUrl: String, action: String): String? {
-        if (MainActivity.activity == null) return null
+        if (PluginContext.app == null) return null
         return try {
             withContext(Dispatchers.IO) {
                 val latch = CountDownLatch(1)
                 var raw: String? = null
                 var webView: WebView? = null
                 withContext(Dispatchers.Main) {
-                    val ctx = MainActivity.activity ?: return@withContext
+                    val ctx = PluginContext.app?.applicationContext ?: return@withContext
                     webView = WebView(ctx).apply {
                         settings.javaScriptEnabled = true
                         settings.domStorageEnabled = true

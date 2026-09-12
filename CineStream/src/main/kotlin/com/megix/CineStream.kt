@@ -12,6 +12,8 @@ import kotlinx.coroutines.runBlocking
 open class CineStream: Plugin() {
     override fun load(context: Context) {
 
+        PluginContext.app = context
+
         // Load dynamic API URLs once
         runBlocking { init() }
 
